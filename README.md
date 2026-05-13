@@ -64,11 +64,16 @@ Este projeto foi desenvolvido como teste técnico com foco em:
 ---
 
 ## 📂 Estrutura do Projeto
-movies/
+Tmdb-Movie-Ratings/
+
 │
+
 ├── backend/
+
 ├── frontend/
+
 ├── start.bat
+
 └── README.md
 
 
