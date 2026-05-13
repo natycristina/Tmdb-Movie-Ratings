@@ -60,6 +60,24 @@ Este projeto foi desenvolvido como teste técnico com foco em:
 - Lista de filmes avaliados
 - Exibição da nota do usuário
 - Navegação para detalhes
+  
+---
+
+## 🏆 Pontos Extras Implementados
+### ✅ Scroll Infinito (Paginação)
+
+A página inicial implementa carregamento automático de novos filmes conforme o usuário rola a tela, melhorando a experiência de navegação.
+
+### ✅ Implementação de Cache no Backend
+
+Foi implementado cache em memória no backend para:
+
+Filmes populares
+Resultados de busca
+Detalhes do filme
+Elenco
+
+Isso reduz chamadas repetidas à API externa do TMDB, melhora performance e evita rate limiting.
 
 ---
 
