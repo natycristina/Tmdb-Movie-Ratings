@@ -13,33 +13,41 @@ search_cache = {}
 details_cache = {}
 
 #Pede para o TMDB mandar os filmes populares
-def get_popular_movies():
+def get_popular_movies(page=1):
     global popular_cache
 
-    if popular_cache is not None:
-        return popular_cache
+    # cache por página
+    if popular_cache and page in popular_cache:
+        return popular_cache[page]
 
-    #URL da API
-    url = f"https://api.themoviedb.org/3/movie/popular?api_key={API_KEY}"
-    #Faz uma requisição HTTP
+    url = f"https://api.themoviedb.org/3/movie/popular?api_key={API_KEY}&page={page}"
     response = requests.get(url, timeout=10)
 
-    popular_cache = response.json()
-    #Retorna um JSON
-    return popular_cache
+    data = response.json()
+
+    if popular_cache is None:
+        popular_cache = {}
+
+    popular_cache[page] = data
+
+    return data
 
 #Pede para o TMDB mandar um determiado filme
-def search_movies(query):
+def search_movies(query, page=1):
     global search_cache
 
-    if query in search_cache:
-        return search_cache[query]
+    cache_key = f"{query}_{page}"
 
-    url = f"https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={query}"
+    if cache_key in search_cache:
+        return search_cache[cache_key]
+
+    url = f"https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={query}&page={page}"
     response = requests.get(url, timeout=10)
 
-    search_cache[query] = response.json()
-    return search_cache[query]
+    data = response.json()
+    search_cache[cache_key] = data
+
+    return data
 
 
 def get_movie_details(movie_id):

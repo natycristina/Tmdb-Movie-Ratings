@@ -11,18 +11,27 @@ movies_bp = Blueprint("movies", __name__)
 @movies_bp.route("/movies/popular")
 def popular():
     try:
-        # chama serviço que busca filmes populares no TMDB
-        data = get_popular_movies()
-        # retorna resposta em JSON para o frontend
+        # pega ?page=1,2,3...
+        page = request.args.get("page", 1, type=int)
+
+        data = get_popular_movies(page)
+
         return jsonify(data)
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+    
 @movies_bp.route("/movies/search")
 def search():
     query = request.args.get("query")
+    page = request.args.get("page", 1, type=int)
+
+    if not query:
+        return jsonify({"error": "Query is required"}), 400
+
     # envia o texto digitado pelo usuário para busca no TMDB
-    data = search_movies(query)
+    data = search_movies(query, page)
     # devolve os resultados ao frontend
     return jsonify(data)
 
@@ -38,7 +47,7 @@ def movie_details(movie_id):
         # espera resultados terminarem
         details = details_future.result()
         credits = credits_future.result()
-        
+
     # junta tudo em uma única resposta JSON
     return jsonify({
         "details": details,

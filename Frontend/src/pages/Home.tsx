@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../components/MovieCard";
 import { SearchBar } from "../components/SearchBar";
-import { getPopularMovies } from "../services/api";
-import { searchMovies } from "../services/api";
+import { getPopularMovies, searchMovies } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
@@ -14,19 +13,29 @@ type Movie = {
 
 export default function Home() {
   const navigate = useNavigate();
+
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [page, setPage] = useState(1);
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    loadMovies();
-  }, []);
+  /* CARREGAR OS FILMES */
+  async function loadMovies(pageNumber = 1, currentQuery = "") {
+    if (loading) return;
 
-  async function loadMovies() {
     setLoading(true);
 
     try {
-      const data = await getPopularMovies();
-      setMovies(data.results);
+      const data = currentQuery
+        ? await searchMovies(currentQuery, pageNumber)
+        : await getPopularMovies(pageNumber);
+
+      setMovies(prev =>
+        pageNumber === 1
+          ? data.results
+          : [...prev, ...data.results]
+      );
+
     } catch (error) {
       console.error(error);
     }
@@ -34,24 +43,40 @@ export default function Home() {
     setLoading(false);
   }
 
-  async function handleSearch(query: string) {
-  //  se estiver vazio, volta para os populares
-  if (!query.trim()) {
-    loadMovies();
-    return;
+  useEffect(() => {
+    loadMovies(1);
+  }, []);
+
+  /* NOVA BUSCA */
+  function handleSearch(newQuery: string) {
+    setQuery(newQuery);
+    setMovies([]);
+    setPage(1);
+    loadMovies(1, newQuery);
   }
 
-  setLoading(true);
+  /* SCROLL INFINITO */
+  useEffect(() => {
+    function handleScroll() {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 300
+      ) {
+        setPage(prev => prev + 1);
+      }
+    }
 
-  try {
-    const data = await searchMovies(query);
-    setMovies(data.results);
-  } catch (error) {
-    console.error(error);
-  }
+    window.addEventListener("scroll", handleScroll);
 
-  setLoading(false);
-  }
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (page === 1) return;
+
+    loadMovies(page, query);
+  }, [page]);
 
   return (
     <div className="home-container">
@@ -61,14 +86,8 @@ export default function Home() {
         <SearchBar onSearch={handleSearch} />
       </div>
 
-      {loading && <p>Loading...</p>}
-
-      {!loading && movies.length === 0 && (
-        <p>No Movies Found.</p>
-      )}
-
       <div className="movies-grid">
-        {movies.map((movie) => (
+        {movies.map(movie => (
           <MovieCard
             key={movie.id}
             title={movie.title}
@@ -77,9 +96,15 @@ export default function Home() {
           />
         ))}
       </div>
-      <button className="ratings-btn" onClick={() => navigate("/rated")}>
-  ⭐ My Ratings
-</button>
+
+      {loading && <p>Loading more movies...</p>}
+
+      <button
+        className="ratings-btn"
+        onClick={() => navigate("/rated")}
+      >
+        ⭐ My Ratings
+      </button>
     </div>
   );
 }

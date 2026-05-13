@@ -4,14 +4,16 @@ const api = axios.create({
   baseURL: "http://localhost:5000/api",
 });
 
-export async function getPopularMovies() {
-  const response = await api.get("/movies/popular");
+export async function getPopularMovies(page = 1) {
+  const response = await api.get(`/movies/popular?page=${page}`);
   return response.data;
-} 
+}
 
-export async function searchMovies(query:string) {
-    const response = await api.get(`/movies/search?query=${query}`);
-    return response.data;
+export async function searchMovies(query: string, page = 1) {
+  const response = await api.get(
+    `/movies/search?query=${query}&page=${page}`
+  );
+  return response.data;
 }
 
 export async function getMovieDetails(id: string) {
