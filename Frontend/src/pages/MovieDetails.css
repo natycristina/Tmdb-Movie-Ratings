@@ -1,0 +1,133 @@
+.movie-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  min-height: 40px;
+  margin-bottom: 50px;
+}
+
+/* BOTÃO VOLTAR */
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background: transparent;
+  border: 2px solid #444;
+  color: white;
+  padding: 40px 25px;
+  border-radius: 9px;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 0.5px;
+
+  background: transparent;
+  border: 2px solid #444;
+  color: white;
+  padding: 20px 25px;
+  border-radius: 9px;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #222;
+}
+
+.back-btn:hover {
+  background: #222;
+}
+
+/* layout principal */
+.movie-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* poster */
+.movie-poster img {
+  width: 300px;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.movie-top {
+  margin-bottom: 70px;
+}
+
+/* info */
+.movie-info {
+  max-width: 600px;
+}
+
+.movie-info h1 {
+  font-size: 46px;
+  margin-bottom: 10px;
+}
+
+/* rating */
+.rating-buttons button {
+  margin: 5px;
+  padding: 20px 25px;
+  border: none;
+  border-radius: 9px;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+.rating-buttons button:hover {
+  background: #e50914;
+}
+
+/* delete */
+.delete-btn {
+  margin-top: 10px;
+  background: #e50914;
+  border: none;
+  color: white;
+  padding: 17px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* elenco */
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.cast-card {
+  background: #222;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.cast-card img {
+  width: 100%;
+  border-radius: 1px;
+}
+
+.movie-header {
+  margin-bottom: 50px;
+}
+.movie-container {
+  min-height: 100vh;
+  background: #141414;
+  color: white;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+}

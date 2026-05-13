@@ -1,0 +1,36 @@
+.search-form {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 45px 14px 20px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  background: #1f1f1f;
+  color: white;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.clear-button:hover {
+  color: white;
+}
