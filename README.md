@@ -1,6 +1,6 @@
 # 🎬 TMDB Movie Ratings
 
-Aplicação web para busca e avaliação de filmes utilizando a API pública do The Movie Database (TMDB).
+Aplicação web para busca e avaliar filmes utilizando a API pública do The Movie Database (TMDB).
 
 O sistema permite pesquisar filmes, visualizar detalhes e salvar avaliações personalizadas do usuário.
 
