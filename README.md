@@ -115,3 +115,28 @@ http://localhost:5173
 Backend:
 
 http://localhost:5000
+
+---
+
+## 📦 Instalação de dependências (primeira execução no Windows)
+
+Caso seja a primeira vez executando:
+
+Backend
+
+```bash
+cd backend
+py -m pip install -r requirements.txt
+```
+
+Frontend
+
+```bash
+cd frontend
+npm install
+```
+Após isso, utilize apenas:
+
+```bash
+.\start.bat
+```
