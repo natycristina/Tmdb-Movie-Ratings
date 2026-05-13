@@ -1,46 +1,112 @@
-# Getting Started with Create React App
+# 🎬 TMDB Movie Ratings
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicação web para busca e avaliação de filmes utilizando a API pública do The Movie Database (TMDB).
 
-## Available Scripts
+O sistema permite pesquisar filmes, visualizar detalhes e salvar avaliações personalizadas do usuário.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Objetivo do Projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Este projeto foi desenvolvido como teste técnico com foco em:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Consumo de APIs externas
+- Criação de API própria
+- Gerenciamento de estado no React
+- Tratamento de loading e erros
+- Persistência de dados em banco de dados
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tecnologias Utilizadas
 
-### `npm run build`
+### Frontend
+- React
+- TypeScript
+- Vite
+- CSS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend
+- Python
+- Flask
+- REST API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Banco de Dados
+- SQLite
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### APIs
+- API pública: **The Movie Database (TMDB)**
+- API própria: comunicação entre frontend e banco de dados
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## ✨ Funcionalidades
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🔎 Página Principal
+- Busca de filmes via TMDB
+- Exibição de pôster e título
+- Estados de loading
+- Navegação para detalhes do filme
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 🎥 Página de Detalhes
+- Sinopse
+- Data de lançamento
+- Elenco
+- Avaliação de 1 a 5 estrelas
+- Editar avaliação
+- Remover avaliação
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### ⭐ Página Filmes Avaliados
+- Lista de filmes avaliados
+- Exibição da nota do usuário
+- Navegação para detalhes
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📂 Estrutura do Projeto
+movies/
+│
+├── backend/
+├── frontend/
+├── start.bat
+└── README.md
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+---
+
+## ⚙️ Como Executar Localmente
+
+### 1️⃣ Clonar o repositório
+
+```bash
+git clone https://github.com/natycristina/Tmdb-Movie-Ratings.git
+```
+
+Entrar na pasta:
+
+```bash
+cd Tmdb-Movie-Ratings
+```
+
+2️⃣ Executar o projeto (UM comando)
+
+No Windows PowerShell:
+
+```bash
+.\start.bat
+```
+
+Isso irá iniciar automaticamente:
+
+✅ Backend Flask
+✅ Frontend React
+
+🌐 Acesso
+
+Frontend:
+
+http://localhost:5173
+
+Backend:
+
+http://localhost:5000
